@@ -1,9 +1,9 @@
 import Swal from "sweetalert2"
 
-const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
+const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto}) => {
   const handlePresupuesto = (e) => {
     e.preventDefault()
-    if (presupuesto < 1 || isNaN(presupuesto)) {
+    if (presupuesto < 1 || !presupuesto) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -12,6 +12,7 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
         })
         return 
     }
+    setIsValidPresupuesto(true)
   }
   return (
     <div className="contenedor-presupuesto contenedor sombra">
@@ -19,11 +20,11 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
         <div className="campo">
             <label htmlFor="">Definir Presupuesto</label>
             <input 
-              type="text" 
+              type="number" 
               className="nuevo-presupuesto"
               placeholder="añade tu presupuesto"
               value={presupuesto}
-              onChange={ e => setPresupuesto(e.target.value)}
+              onChange={ e => setPresupuesto(Number(e.target.value))}
             />
         </div>
         <input type="submit" value="Añadir" />

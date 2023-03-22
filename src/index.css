@@ -1,5 +1,6 @@
 :root {
     --azul: #85e6c0;
+    --verde-obscuro: #6bb39b;
     --blanco: #ffffff;
     --gris-claro: #f5f5f5;
     --gris: #94a3b8;
@@ -99,7 +100,7 @@ header h1 {
     font-size: 1.6rem;
 }
 .formulario input[type="submit"] {
-    background-color: #6bb39b;
+    background-color: var(--verde-obscuro);
     border: none;
     padding: 1rem;
     text-align: center;
@@ -139,13 +140,6 @@ header h1 {
     text-transform: uppercase;
     font-size: 1.8rem;
     text-align: center;
-}
-.alerta.error {
-    background-color: var(--blanco);
-    border-left: 5px solid #b91c1c;
-    color: #b91c1c;
-}
-.alerta.success {
 }
 
 .contenedor {
@@ -328,6 +322,7 @@ main {
 
 .nuevo-gasto img {
     width: 5rem;
+    fill: var(--verde-obscuro);
 }
 .nuevo-gasto img:hover {
     cursor: pointer;

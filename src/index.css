@@ -69,12 +69,12 @@ header h1 {
     }
 }
 .formulario legend {
-    font-size: 3.6rem;
+    font-size: 3.2rem;
     text-align: center;
     display: block;
     text-transform: uppercase;
     color: var(--blanco);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--azul);
 }
@@ -85,9 +85,9 @@ header h1 {
 
 .formulario label {
     color: var(--azul);
-    font-size: 2.8rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .formulario input[type="text"],
@@ -96,6 +96,7 @@ header h1 {
     border-radius: 1rem;
     padding: 1rem;
     border: none;
+    outline: none;
     flex: 1;
     font-size: 1.6rem;
 }
@@ -135,12 +136,20 @@ header h1 {
 .alerta {
     padding: 2rem 5rem;
     max-width: 60rem;
-    margin: 2rem auto 2rem auto;
+    margin: 1rem auto 2rem auto;
     font-weight: 900;
     text-transform: uppercase;
     font-size: 1.8rem;
     text-align: center;
 }
+
+.error {
+    background-color: #f7f7f75c;
+    color: #e2091e;
+    border-left: 3px solid #f70019;
+    font-size: small;
+}
+
 
 .contenedor {
     width: 90%;
@@ -330,11 +339,14 @@ main {
 
 .modal {
     position: absolute;
-    background-color: rgb(0 0 0 / 0.92);
+    background-color: rgba(0, 0, 0, 0.457);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
 }
 .modal .cerrar-modal {
     position: absolute;

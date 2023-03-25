@@ -346,7 +346,6 @@ main {
     bottom: 0;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-
 }
 .modal .cerrar-modal {
     position: absolute;

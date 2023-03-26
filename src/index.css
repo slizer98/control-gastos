@@ -27,6 +27,10 @@ html {
     overflow: hidden;
     height: 100vh;
 }
+.no-fijar {
+    overflow: auto;
+    height: auto;
+}
 
 h1 {
     font-size: 4rem;
@@ -144,7 +148,7 @@ header h1 {
 }
 
 .error {
-    background-color: #f7f7f75c;
+    background-color: #f7f7f7d1;
     color: #e2091e;
     border-left: 3px solid #f70019;
     font-size: small;

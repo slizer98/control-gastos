@@ -19,7 +19,6 @@ function App() {
     document.body.classList.add('fijar')
     setTimeout(() => {
       setAnimarModal(!animarModal)
-      document.body.classList.remove('fijar')
     }, 500);
   }
 
@@ -31,11 +30,14 @@ function App() {
     setAnimarModal(!animarModal)
     setTimeout(() => {
       setModal(!modal)
-      document.body.classList.remove('fijar')
+      // document.body.classList.remove('fijar')
       if(listaRef.current){
         listaRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
       }
     }, 500);
+  }
+  if(!modal){
+    document.body.classList.remove('fijar')
   }
   
   return (

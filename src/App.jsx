@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect ,useRef } from 'react'
 import Header from './components/Header'
 import Modal from './components/Modal'
 import ListadoGastos from './components/ListadoGastos'
@@ -11,11 +11,25 @@ function App() {
   const [modal, setModal] = useState(false)
   const [animarModal, setAnimarModal] = useState(false)
   const [gastos, setGastos] = useState([])
+  const [gastoEditar, setGastoEditar] = useState({})
+
+  useEffect(() => {
+    if(Object.keys(gastoEditar).length > 0){
+      window.scrollTo(0, 0)
+      setModal(!modal)
+      document.body.classList.add('fijar')
+      setTimeout(() => {
+        setAnimarModal(!animarModal)
+      }, 500);
+    }
+  }, [gastoEditar])
+  
   const listaRef = useRef(null)
 
   const handleNuevoGasto = () => {
     window.scrollTo(0, 0)
     setModal(!modal)
+    setGastoEditar({})
     document.body.classList.add('fijar')
     setTimeout(() => {
       setAnimarModal(!animarModal)
@@ -30,7 +44,6 @@ function App() {
     setAnimarModal(!animarModal)
     setTimeout(() => {
       setModal(!modal)
-      // document.body.classList.remove('fijar')
       if(listaRef.current){
         listaRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
       }
@@ -47,11 +60,12 @@ function App() {
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
         setIsValidPresupuesto={setIsValidPresupuesto}
+        gastos={gastos}
         />
       {isValidPresupuesto && (
         <>
           <main ref={listaRef}>
-            <ListadoGastos gastos={gastos} />
+            <ListadoGastos gastos={gastos} setGastoEditar={setGastoEditar} />
           </main>
           <div className='nuevo-gasto'>
             <img 
@@ -69,6 +83,7 @@ function App() {
           animarModal={animarModal}
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
+          gastoEditar={gastoEditar}
           />
         </div>
         )}

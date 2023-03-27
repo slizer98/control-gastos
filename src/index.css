@@ -414,3 +414,35 @@ body .modal {
     font-size: 2.4rem;
     text-align: right;
 }
+
+/* sweetAlert */
+
+.swal2-container.swal2-center>.swal2-popup {
+    width: 450px;
+    height: 400px;
+}
+.swal2-popup .swal2-icon {
+    font-size: 2rem;
+}
+.swal2-popup .swal2-title {
+    font-size: 2.4rem;
+}
+.swal2-html-container {
+    font-size: 2rem;
+}
+
+.swal2-popup .swal2-confirm {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+
+.swal2-popup .swal2-cancel {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+.CircularProgressbar .CircularProgressbar-path {
+    stroke: var(--blanco);
+}
+.CircularProgressbar .CircularProgressbar-text {
+    fill: var(--verde-obscuro);
+}

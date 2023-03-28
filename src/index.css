@@ -391,7 +391,7 @@ body .modal {
 }
 
 .CircularProgressbar .CircularProgressbar-text {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
 }
 
 /*** SWIPE LIST OVERRIDES **/

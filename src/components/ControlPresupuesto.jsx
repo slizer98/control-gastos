@@ -4,6 +4,7 @@ import "react-circular-progressbar/dist/styles.css"
 
 const ControlPresupuesto = ({presupuesto, gastos}) => {
 
+  const [porcentaje, setPorcentaje] = useState(0)
   const [disponible, setDisponible] = useState(0)
   const [gastado, setGastado] = useState(0)
   
@@ -11,9 +12,14 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
     const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0)
 
     const totalDisponible = presupuesto - totalGastado
-    setDisponible(totalDisponible)
+    const nuevoPorcentaje = (((presupuesto - totalDisponible) / presupuesto) * 100).toFixed(2)
     
+    
+    setDisponible(totalDisponible)
     setGastado(totalGastado)
+    setTimeout(() => {
+      setPorcentaje(nuevoPorcentaje)
+    }, 2500);
   }, [gastos])
   
   const formatearCantidad = (cantidad) => {
@@ -25,17 +31,17 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
       <div>
         {/* poner grafica rellena */}
         <CircularProgressbar
-          value={gastado}
-          maxValue={presupuesto}
+          value={porcentaje}
           background
           backgroundPadding={6}
           styles={buildStyles({
             backgroundColor: "#85e6c0",
             textColor: "#fff",
             pathColor: "#fff",
-            trailColor: "transparent"
+            trailColor: "transparent",
+            textSize: "0.95rem",
           })}
-          text={`${(gastado * 100 / presupuesto).toFixed(0)}% Gastado`}
+          text={`${porcentaje}% Gastado`}
         />
       </div>
 

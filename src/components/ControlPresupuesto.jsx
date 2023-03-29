@@ -29,14 +29,14 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
    return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
-        {/* poner grafica rellena */}
+        
         <CircularProgressbar
           value={porcentaje}
           background
           backgroundPadding={6}
           styles={buildStyles({
-            backgroundColor: "#85e6c0",
-            textColor: "#fff",
+            backgroundColor: porcentaje > 100 ? "#dc2626" : "#85e6c0",
+            textColor: porcentaje > 100 ? "#000" : "#fff",
             pathColor: "#fff",
             trailColor: "transparent",
             textSize: "0.95rem",
@@ -49,7 +49,7 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
         <p>
             <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
         </p>
-        <p>
+        <p className={`${disponible < 0  ? 'negativo' : ''}`}>
             <span>Disponible: </span>{formatearCantidad(disponible)}
         </p>
         <p>

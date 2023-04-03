@@ -1,8 +1,15 @@
 import { useState ,useEffect } from "react"
 import {CircularProgressbar, buildStyles} from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
+import Swal from "sweetalert2"
 
-const ControlPresupuesto = ({presupuesto, gastos}) => {
+const ControlPresupuesto = ({
+  presupuesto, 
+  gastos, 
+  setGastos, 
+  setPresupuesto,
+  setIsValidPresupuesto
+  }) => {
 
   const [porcentaje, setPorcentaje] = useState(0)
   const [disponible, setDisponible] = useState(0)
@@ -26,6 +33,26 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
     return cantidad.toLocaleString('en-US', 
     {style: 'currency', currency: 'USD'})
   }
+
+  const handleResetApp = () => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, resetear',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setPresupuesto('')
+        setGastos([])
+        setIsValidPresupuesto(false)
+      }
+    })
+  }
+  
    return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
@@ -46,6 +73,9 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
       </div>
 
       <div className="contenido-presupuesto">
+        <button className="reset-app" type="button" onClick={handleResetApp}>
+          Resetear App
+        </button>
         <p>
             <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
         </p>
